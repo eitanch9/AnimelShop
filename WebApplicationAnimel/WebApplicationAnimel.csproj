@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Assets\Alligator.jfif" />
+    <None Include="wwwroot\Assets\Bat.jpg" />
+    <None Include="wwwroot\Assets\cat.jfif" />
+    <None Include="wwwroot\Assets\Ciconia.jpg" />
+    <None Include="wwwroot\Assets\Corvus.jpg" />
+    <None Include="wwwroot\Assets\Crustacea.jpg" />
+    <None Include="wwwroot\Assets\Dasyatidae.jpg" />
+    <None Include="wwwroot\Assets\Decapodiformes.JPG" />
+    <None Include="wwwroot\Assets\Dog.jfif" />
+    <None Include="wwwroot\Assets\Dolphin.jfif" />
+    <None Include="wwwroot\Assets\DracoVolans.jfif" />
+    <None Include="wwwroot\Assets\Eagle.jfif" />
+    <None Include="wwwroot\Assets\Frog.jfif" />
+    <None Include="wwwroot\Assets\GreyParrot.jpg" />
+    <None Include="wwwroot\Assets\Hippocampus.jpg" />
+    <None Include="wwwroot\Assets\Medusozoa.jpg" />
+    <None Include="wwwroot\Assets\MicrochaetusRappi.jpg" />
+    <None Include="wwwroot\Assets\ProboscisMonkey.jfif" />
+    <None Include="wwwroot\Assets\PythonSnake.jfif" />
+    <None Include="wwwroot\Assets\Salamander.jfif" />
+    <None Include="wwwroot\Assets\Salmon.jfif" />
+    <None Include="wwwroot\Assets\Tetraodontidae.jfif" />
+    <None Include="wwwroot\Assets\Toad.jfif" />
+    <None Include="wwwroot\Assets\Turtle.jfif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+  </ItemGroup>
+
+</Project>

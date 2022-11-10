@@ -1,0 +1,26 @@
+﻿@using WebApplicationAnimel.Models
+@model IEnumerable<Animal>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+
+<div>
+
+    @foreach (var item in Model)
+    {
+        <div>
+        <p>@item.Name</p>
+
+
+            <img class="m-1" src=@item.PictureLink alt="Sample Photo">
+
+
+        </div>
+    }
+
+
+</div>
