@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplicationAnimel.Data;
-using WebApplicationAnimel.Models;
+using Model.Models;
+using Model.Repository;
 
 namespace WebApplicationAnimel.Controllers
 {
@@ -10,10 +10,10 @@ namespace WebApplicationAnimel.Controllers
 
         public AnimalController(IRepository<Animal> repository) => animal = repository;
 
-        public IActionResult Animals() => View(animal.ShowAnimals());
+        public IActionResult Animals() => View(animal.GetItems());
 
 
-        public IActionResult Details(int Id) => View(animal.GetAnimalsById(Id));
+        public IActionResult Details(int Id) => View(animal.GetItemsById(Id));
 
      
     }

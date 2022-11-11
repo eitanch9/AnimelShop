@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApplicationAnimel.DAL;
-using WebApplicationAnimel.Data;
-using WebApplicationAnimel.Models;
+using Model.Models;
+using Model.Repository;
 
 namespace WebApplicationAnimel.Controllers
 {

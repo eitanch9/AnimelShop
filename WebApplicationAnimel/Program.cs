@@ -1,9 +1,9 @@
 
 
 using Microsoft.EntityFrameworkCore;
-using WebApplicationAnimel.DAL;
-using WebApplicationAnimel.Data;
-using WebApplicationAnimel.Models;
+using Model.DAL;
+using Model.Models;
+using Model.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
