@@ -6,15 +6,23 @@ namespace WebApplicationAnimel.Controllers
 {
     public class AnimalController : Controller
     {
-        private IRepository<Animal> animal;
+        private AnimalRepository animals;
+        private CategortyRepository categortys;
 
-        public AnimalController(IRepository<Animal> repository) => animal = repository;
+        public AnimalController(AnimalRepository RAnimals,CategortyRepository RCategorys) { categortys = RCategorys; animals = RAnimals; }
 
-        public IActionResult Animals() => View(animal.GetItems());
+        public IActionResult Animals(string categoryName) => View(animals.ShoeAnimalByCategory(categoryName));
 
+        public IActionResult Details(int Id) => View(animals.FindById(Id));
 
-        public IActionResult Details(int Id) => View(animal.GetItemsById(Id));
+        //public IActionResult Create(Animal animal)
+        //{
+        //   var added=animals.Add(animal);
+        //    if (added) { }
+            
 
-     
+        //}
+        
+
     }
 }

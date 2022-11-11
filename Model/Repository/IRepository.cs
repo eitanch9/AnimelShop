@@ -15,18 +15,13 @@ namespace Model.Repository
 
         bool Edit(T t);
 
-       
+
         T FindByReference(T entity);
 
+        T FindById(int Id);
 
 
-        //T GetItemsById(int Id);
 
-        //IEnumerable<T> ShowAnimalsByCategory(int Id);
-
-        //IEnumerable<T> Show2AnimalsWithTheMostComment();
-
-        //void AddComment(Comment comment,int Id);
 
 
     }

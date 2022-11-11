@@ -6,11 +6,11 @@ namespace WebApplicationAnimel.Controllers
 {
     public class HomeController : Controller
     {
-        private IRepository<Animal> animal;
+        private AnimalRepository animal;
 
-        public HomeController(IRepository<Animal> repository) => animal = repository;
+        public HomeController(AnimalRepository repository) { animal = repository; }
 
 
-        public IActionResult Index() => View(animal.Show2AnimalsWithTheMostComment());
+        public IActionResult Index() => View(animal.ShowNumOfAnimalsWithTheMostComment(2));
     }
 }

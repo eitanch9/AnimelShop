@@ -15,9 +15,6 @@ namespace Model.Repository
         public IEnumerable<Animal> ShowNumOfAnimalsWithTheMostComment(int numofAnimalReturn)
         { return _data.Animals.OrderBy(animal => animal.Comments!.Count).Take(numofAnimalReturn);  }
 
-        public Animal GetAnimalsById(int animalid)
-        { return _data.Animals.Where(a => a.AnimalId == animalid).SingleOrDefault()!; }
-
         public override bool Edit(Animal entity)
         {
             if (entity == null) { return false; }
@@ -31,6 +28,14 @@ namespace Model.Repository
                 return true;
             }
             return false;
+        }
+
+        public IEnumerable<Animal>? ShoeAnimalByCategory(string categoryName)
+        {
+            if (categoryName == null) { return null!; }
+            var category = _data.Categories!.SingleOrDefault(c => c.Name == categoryName);
+            if (category == null) { return null; }
+            return _data.Animals.Where(a => a.Category!.CategoryId == category.CategoryId).AsQueryable();
         }
     }
     
