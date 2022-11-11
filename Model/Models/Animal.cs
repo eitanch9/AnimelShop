@@ -1,14 +1,38 @@
-﻿namespace Model.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Model.Models
 
 {
     public class Animal
     {
+        [Key]
+        [Display(Name = "ID:")]
+        [Required(ErrorMessage = "Please enter ID")]
         public int AnimalId { get; set; }
+
+        [MaxLength(25)]
+        [Display(Name = "Name:")]
+        [Required(ErrorMessage = "Please enter Name.")]
         public string? Name { get; set; }
+
+
+        [Range(0,120) ]
+        [Display(Name = "Age:")]
+        [Required(ErrorMessage = "Please enter Age.")]
         public int Age { get; set; }
-        public string? PictureLink { get; set; }
+
+
+        [Display(Name = "Description:")]
+        [Required(ErrorMessage = "Please enter Description.")]
         public string? Description { get; set; }
 
+        [Display(Name = "Picture Link:")]
+        [Required(ErrorMessage = "Please enter Picture Link.")]
+        public string? PictureLink { get; set; }
+
+
+        [Display(Name = "Category:")]
+        [Required(ErrorMessage = "Category")]
         public Category? Category { get; set; }
 
         public List<Comment>? Comments { get; set; }

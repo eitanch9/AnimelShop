@@ -1,9 +1,17 @@
-﻿namespace Model.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Model.Models
 {
     public class Category
     {
+        [Key]
+        [Display(Name = "Category Id:")]
+        [Required(ErrorMessage = "Please enter Category Id.")]
         public int CategoryId { get; set; }
 
+        [MaxLength(25)]
+        [Display(Name = "Name:")]
+        [Required(ErrorMessage = "Please enter Name.")]
         public string? Name { get; set; }
 
         public override bool Equals(object? obj)

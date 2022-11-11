@@ -7,9 +7,9 @@ using Model.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
-builder.Services.AddTransient<IRepository<Animal>,AnimalRepository>();
-builder.Services.AddTransient<IRepository<Comment>, CommentRepoditory>();
-builder.Services.AddTransient<IRepository<Category>, CategortyRepository>();
+builder.Services.AddTransient<AnimalRepository>();
+builder.Services.AddTransient<CommentRepoditory>();
+builder.Services.AddTransient<CategortyRepository>();
 builder.Services.AddDbContext<AnimalsContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
