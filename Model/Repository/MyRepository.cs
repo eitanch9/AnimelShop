@@ -48,9 +48,7 @@ namespace Model.Repository
 
         public abstract  bool Edit(T entity);
 
-        public async Task<T> FindByIdAsync(int Id) => await _data.Set<T>().FindAsync(Id);
-
-        public  T FindById(int Id) =>  _data.Set<T>().Find(Id);
+        public abstract T FindById(int Id);
 
 
 

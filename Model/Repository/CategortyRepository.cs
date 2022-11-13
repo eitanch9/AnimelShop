@@ -29,5 +29,11 @@ namespace Model.Repository
             return false;
         }
 
+        public override Category? FindById(int Id)
+        {
+            return _data.Categories!.FirstOrDefault(c => c.CategoryId == Id);
+        }
+
+        
     }
 }

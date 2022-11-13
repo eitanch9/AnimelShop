@@ -1,10 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Models
 
 {
     public class Animal
     {
+
+      
+
         [Key]
         [Display(Name = "ID:")]
         [Required(ErrorMessage = "Please enter ID")]
@@ -30,6 +34,10 @@ namespace Model.Models
         [Required(ErrorMessage = "Please enter Picture Link.")]
         public string? PictureLink { get; set; }
 
+        [ForeignKey("CategoryId")]
+        [Display(Name = "Category id:")]
+        [Required(ErrorMessage = "Please enter Category.")]
+        public int CategoryId { get; set; }
 
         [Display(Name = "Category:")]
         [Required(ErrorMessage = "Category")]

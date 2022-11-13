@@ -13,7 +13,7 @@ namespace Model.Repository
 
 
         public IEnumerable<Animal> ShowNumOfAnimalsWithTheMostComment(int numofAnimalReturn)
-        { return _data.Animals.OrderByDescending(animal => animal.Comments!.Count).Take(numofAnimalReturn);  }
+        { return _data.Animals.OrderByDescending(animal => animal.Comments!.Count).Take(numofAnimalReturn); }
 
         public override bool Edit(Animal entity)
         {
@@ -38,6 +38,18 @@ namespace Model.Repository
             if (category == null) { return null; }
             return _data.Animals.Where(a => a.Category!.CategoryId == category.CategoryId).AsQueryable();
         }
+
+        public IEnumerable<Comment>? GetCommentById(int Id)
+        {
+            if (Id == 0) { return null; }
+            return FindById(Id).Comments.AsQueryable();
+        }
+
+
+        public override Animal? FindById(int Id)
+        {
+            return _data.Animals.Include(c => c.Comments).FirstOrDefault(x => x.AnimalId == Id);
+        }
     }
-    
+
 }

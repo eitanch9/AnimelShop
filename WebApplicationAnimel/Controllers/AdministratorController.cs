@@ -6,11 +6,13 @@ namespace WebApplicationAnimel.Controllers
 {
     public class AdministratorController : Controller
     {
-        private AnimalRepository animal;
+        private AnimalRepository animals;
 
-        public AdministratorController(AnimalRepository repository) => animal = repository;
-        public IActionResult Administrator(string categoryName) => View(animal.ShoeAnimalByCategory(categoryName));
+        public AdministratorController(AnimalRepository repository) => animals = repository;
+        public IActionResult Administrator(string categoryName) => View(animals.ShoeAnimalByCategory(categoryName));
         public IActionResult AddAnimalPage() => View();
+
+        public IActionResult EditAnimalPage(int Id) => View(animals.FindById(Id));
 
 
     }

@@ -1,7 +1,42 @@
-﻿
+﻿@using Model.Models
+@model Animal
+
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
+
+<section class="u-align-center u-clearfix u-container-align-center u-gradient u-section-6" id="sec-e80f">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <h1 class="u-align-center u-text u-text-default u-text-1">@Model.Name</h1>
+        <h3 class="u-align-center u-custom-font u-font-lobster u-text u-text-2">Age: @Model.Age</h3>
+        <img class="u-image u-image-default u-preserve-proportions u-image-1" src="..//@Model.PictureLink" alt="" data-image-width="400" data-image-height="400">
+        <h3 class="u-align-center u-custom-font u-font-lobster u-text u-text-3">Category: @ViewBag.CategoryName</h3>
+        <p class="u-align-center u-text u-text-4">@Model.Description</p>
+        <h3 class="u-align-center u-custom-font u-font-lobster u-text u-text-5">Comment</h3>
+        <div class="u-list u-list-1">
+            <div class="u-repeater u-repeater-1">
+                   @if (ViewBag.AnimalComments != null)
+                {
+                    foreach (var comment in ViewBag.AnimalComments)
+                    {
+                        <div class="u-container-style u-list-item u-repeater-item">
+                            <div class="u-container-layout u-similar-container u-container-layout-1">
+                                <span class="u-icon u-icon-circle u-text-palette-1-base u-icon-1">
+                                    <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 515.556 515.556" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-6316"></use></svg>
+                                    <svg class="u-svg-content" viewBox="0 0 515.556 515.556" id="svg-6316"><path d="m0 274.226 176.549 176.886 339.007-338.672-48.67-47.997-290.337 290-128.553-128.552z"></path></svg>
+
+
+
+                                </span>
+                                <p class="u-text u-text-8">@comment.CommentText</p>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <a asp-action="addCommentPage" asp-controller="Animal"  asp-route-Id="@Model.AnimalId"  class="u-align-center u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">add comment</a>
+    </div>
+</section>

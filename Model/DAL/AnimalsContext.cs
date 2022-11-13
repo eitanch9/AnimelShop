@@ -21,9 +21,9 @@ namespace Model.DAL
                 new { CategoryId = 1, Name = "Mammal" },
                 new { CategoryId = 2, Name = "Bird" },
                 new { CategoryId = 3, Name = "Fish" },
-                new { CategoryId = 4, Name = "Reptile" },//זוחלים
-                new { CategoryId = 5, Name = "Amphibians" },//דו חיים
-                new { CategoryId = 6, Name = "Invertebrates" }//חסרי חולית
+                new { CategoryId = 4, Name = "Reptile" },
+                new { CategoryId = 5, Name = "Amphibians" },
+                new { CategoryId = 6, Name = "Invertebrates" }
                 );
             int id = 0;
 
@@ -75,7 +75,9 @@ namespace Model.DAL
                 new { CommentText = "jnndffdgksd", AnimalId = 4, CommentId = ++id },
                 new { CommentText = "jnerve", AnimalId = 4, CommentId = ++id },
                 new { CommentText = "jnnvdfgd", AnimalId = 2, CommentId = ++id },
-                  new { CommentText = "jnnvdfgd", AnimalId = 8, CommentId = ++id }
+                  new { CommentText = "jnnvdfgd", AnimalId = 8, CommentId = ++id },
+                    new { CommentText = "jnnvdfsgdgd", AnimalId = 2, CommentId = ++id },
+                  new { CommentText = "jnnvdfgsgdd", AnimalId = 8, CommentId = ++id }
 
                 );
 

@@ -16,10 +16,6 @@ namespace Model.Repository
         bool Edit(T t);
 
 
-        T FindByReference(T entity);
-
-        T FindById(int Id);
-
 
 
 

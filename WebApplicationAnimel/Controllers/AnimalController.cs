@@ -7,27 +7,32 @@ namespace WebApplicationAnimel.Controllers
     public class AnimalController : Controller
     {
         private AnimalRepository animals;
-        private CategortyRepository categortys;
+        private CategortyRepository category;
 
         public AnimalController(AnimalRepository RAnimals, CategortyRepository RCategorys)
         {
-            categortys = RCategorys; animals = RAnimals;
+            category = RCategorys; animals = RAnimals;
         }
 
         public IActionResult Animals(string categoryName)
-        {var categories=categortys.GetItems();
+        {
+            var categories = category.GetItems();
             ViewBag.Categories = categories;
-         return   View(animals.ShoeAnimalByCategory(categoryName));
+            var Animals = (animals.ShoeAnimalByCategory(categoryName));
+            if (Animals == null)
+            {
+                categoryName = "All";
+                Animals = animals.ShoeAnimalByCategory(categoryName); }
+            return View(Animals);
         }
-        public IActionResult Details(int Id) => View(animals.FindById(Id));
+        public IActionResult Details(int Id)
+        {
+            ViewBag.AnimalComments = animals.GetCommentById(Id);
+            ViewBag.CategoryName= category.FindById(animals.FindById(Id).CategoryId).Name;
+            return View(animals.FindById(Id));
+        }
 
-        //public IActionResult Create(Animal animal)
-        //{
-        //   var added=animals.Add(animal);
-        //    if (added) { }
-
-
-        //}
+        public IActionResult addCommentPage(int Id) => View(animals.FindById(Id));
 
 
     }

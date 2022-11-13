@@ -29,5 +29,10 @@ namespace Model.Repository
             }
             return false;
         }
+
+        public override Comment? FindById(int Id)
+        {
+           return _data.Comments.FirstOrDefault(c=>c.CommentId==Id);
+        }
     }
 }
