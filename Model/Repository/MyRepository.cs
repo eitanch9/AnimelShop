@@ -43,7 +43,7 @@ namespace Model.Repository
 
         public T FindByReference(T entity) => GetItems().SingleOrDefault(entity);           
         
-        public IEnumerable<T> GetItems()=> _data.Set<T>().AsNoTracking();
+        public IEnumerable<T> GetItems()=> _data.Set<T>().AsEnumerable();
 
 
         public abstract  bool Edit(T entity);

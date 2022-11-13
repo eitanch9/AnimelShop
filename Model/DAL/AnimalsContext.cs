@@ -38,7 +38,7 @@ namespace Model.DAL
                 new { AnimalId = ++id, Name = "grey parrot", Age = 3, CategoryId = 2, PictureLink = "Assets\\GreyParrot.jpg", Description = "The grey parrot (Psittacus erithacus), also known as the Congo grey parrot, Congo African grey parrot or African grey parrot, is an Old World parrot in the family Psittacidae. The Timneh parrot (Psittacus timneh) once was identified as a subspecies of the grey parrot, but has since been elevated to a full species." },
                 new { AnimalId = ++id, Name = "Eagle", Age = 12, CategoryId = 2, PictureLink = "Assets\\Eagle.jfif", Description = "Eagle is the common name for many large birds of prey of the family Accipitridae. Eagles belong to several groups of genera, some of which are closely related. Most of the 60 species of eagle are from Eurasia and Africa. Outside this area, just 14 species can be found—2 in North America, 9 in Central and South America, and 3 in Australia." },
                 new { AnimalId = ++id, Name = "Corvus", Age =4 , CategoryId = 2, PictureLink = "Assets\\Corvus.jpg", Description = "Corvus is a widely distributed genus of medium-sized to large birds in the family Corvidae. It includes species commonly known as crows, ravens and rooks. The species commonly encountered in Europe are the carrion crow, the hooded crow, the common raven and the rook; those discovered later were named \"crow\" or \"raven\" chiefly on the basis of their size, crows generally being smaller. The genus name is Latin for \"crow\"." },
-                new { AnimalId = ++id, Name = "Ciconia", Age =15 , CategoryId = 2, PictureLink = "Assets\\Ciconia.jpg", Description = "Ciconia is a genus of birds in the stork family. Six of the seven living species occur in the Old World, but the maguari stork has a South American range. In addition, fossils suggest that Ciconia storks were somewhat more common in the tropical Americas in prehistoric times." },
+                new { AnimalId = ++id, Name = "Ciconia", Age =15 , CategoryId = 2, PictureLink = "Assets\\Ciconia.jfif", Description = "Ciconia is a genus of birds in the stork family. Six of the seven living species occur in the Old World, but the maguari stork has a South American range. In addition, fossils suggest that Ciconia storks were somewhat more common in the tropical Americas in prehistoric times." },
 
 
                 new { AnimalId = ++id, Name = "Salmon", Age =2 , CategoryId =3 , PictureLink = "Assets\\Salmon.jfif", Description = "The Atlantic salmon (Salmo salar) is a species of ray-finned fish in the family Salmonidae. It is the third largest of the Salmonidae, behind Siberian taimen and Pacific Chinook salmon, growing up to a meter in length. Atlantic salmon are found in the northern Atlantic Ocean and in rivers that flow into it. Most populations are anadromous, hatching in streams and rivers but moving out to sea as they grow where they mature, after which the adults seasonally move upstream again to spawn." },
@@ -74,7 +74,8 @@ namespace Model.DAL
                 new { CommentText = "jnn.ksddfvgvcx", AnimalId = 1, CommentId = ++id },
                 new { CommentText = "jnndffdgksd", AnimalId = 4, CommentId = ++id },
                 new { CommentText = "jnerve", AnimalId = 4, CommentId = ++id },
-                new { CommentText = "jnnvdfgd", AnimalId = 2, CommentId = ++id }
+                new { CommentText = "jnnvdfgd", AnimalId = 2, CommentId = ++id },
+                  new { CommentText = "jnnvdfgd", AnimalId = 8, CommentId = ++id }
 
                 );
 

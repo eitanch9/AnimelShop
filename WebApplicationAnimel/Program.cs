@@ -1,5 +1,4 @@
 
-
 using Microsoft.EntityFrameworkCore;
 using Model.DAL;
 using Model.Models;
@@ -29,6 +28,7 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute("Default", "{controller=Home}/{action=Index}");
 });
+    app.UseRouting();
 
 app.Run(async context => { await context.Response.WriteAsync("The Web Can't opened"); });
 
