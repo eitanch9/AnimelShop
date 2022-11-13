@@ -13,8 +13,8 @@
                     {
                         <div class="u-container-style u-list-item u-repeater-item">
                             <div class="u-container-layout u-similar-container u-container-layout-1">
-                                <img class=" u-radius-45" src=@item.PictureLink alt="Animal Photo" width="200" height="200">
                                 <h3 class="u-text u-text-default u-text-1">@item.Name</h3>
+                                <img class=" u-radius-45" src=@item.PictureLink alt="Animal Photo" width="200" height="200">
                                 <a asp-controller="Animal" asp-action="Details" asp-route-Id="@item.AnimalId" class="u-active-none u-border-2 u-border-hover-palette-2-base u-border-palette-2-light-1 u-btn u-button-style u-hover-none u-none u-text-body-color u-btn-1">learn more</a>
                             </div>
                         </div>
@@ -24,5 +24,3 @@
         </div>
     </section>
 </body>
-
-

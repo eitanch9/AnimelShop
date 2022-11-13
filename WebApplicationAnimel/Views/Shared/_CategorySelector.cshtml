@@ -1,7 +1,8 @@
 ﻿@using Model.Models
 <div>
-    <select id="Categories">
-        <option selected value="All">Select category</option>
+
+    <select class="Categories">
+        <option selected value="All">All category</option>
         @foreach (var item in ViewBag.Categories)
         {
             <option value="@item.Name">@item.Name</option>
