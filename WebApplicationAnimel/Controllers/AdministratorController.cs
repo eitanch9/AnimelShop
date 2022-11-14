@@ -20,7 +20,12 @@ namespace WebApplicationAnimel.Controllers
             ViewBag.Categories = categories;
             return View(animals.ShoeAnimalByCategory(Id));
         }
-        public IActionResult AddAnimalPage() => View();
+        public IActionResult AddAnimalPage()
+        {
+            var categories = category.GetItems();
+            ViewBag.Categories = categories;
+            return View();
+        }
 
         public IActionResult EditAnimalPage(int Id) => View(animals.FindById(Id));
 

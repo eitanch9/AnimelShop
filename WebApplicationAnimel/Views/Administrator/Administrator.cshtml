@@ -26,12 +26,14 @@
 </script>
 
 
-
-<section class="u-clearfix u-gradient u-section-3" id="sec-b39b">
+<section class="u-clearfix u-gradient u-section-4" id="sec-b39b">
     <div class="u-expanded-width u-list u-list-1">
         <div class="u-repeater u-repeater-1">
-                @foreach (var item in Model)
-                {
+            <div class="d-grid ">
+                <a class="btn btn-info btn-lg fs-2 fw-bold" asp-action="AddAnimalPage" asp-controller="Administrator">Add Animal</a> <br>
+            </div>
+            @foreach (var item in Model)
+            {
             <div class="u-container-style u-list-item u-repeater-item">
                 <div class="u-container-layout u-similar-container u-container-layout-1">
                         <img class="u-image u-image-round u-radius-10 u-image-1" src="../../@item.PictureLink" alt="" data-image-width="1280" data-image-height="739">
