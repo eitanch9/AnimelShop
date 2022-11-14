@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Models
@@ -7,7 +9,7 @@ namespace Model.Models
     public class Animal
     {
 
-      
+
 
         [Key]
         [Display(Name = "ID:")]
@@ -20,7 +22,7 @@ namespace Model.Models
         public string? Name { get; set; }
 
 
-        [Range(0,120) ]
+        [Range(0, 120)]
         [Display(Name = "Age:")]
         [Required(ErrorMessage = "Please enter Age.")]
         public int Age { get; set; }
@@ -58,8 +60,6 @@ namespace Model.Models
             return true;
 
         }
-
-
     }
 
 }

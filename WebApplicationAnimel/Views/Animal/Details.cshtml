@@ -8,7 +8,7 @@
 
 <section class="u-align-center u-border-2 u-border-grey-75 u-clearfix u-gradient u-section-7" id="sec-e80f">
     <div class="u-clearfix u-sheet u-sheet-1">
-         <h1 class="u-align-center u-text u-text-default u-text-1">@Model.Name</h1>
+        <h1 class="u-align-center u-text u-text-default u-text-1">@Model.Name</h1>
         <h3 class="u-align-center u-custom-font u-font-lobster u-text u-text-2">Age: @Model.Age</h3>
         <img class="u-image u-image-default u-preserve-proportions u-image-1" src="../../@Model.PictureLink" alt="" data-image-width="400" data-image-height="400">
         <h3 class="u-align-center u-custom-font u-font-lobster u-text u-text-3">Category: @ViewBag.CategoryName</h3>
@@ -16,8 +16,8 @@
         <h3 class="u-align-center u-custom-font u-font-lobster u-text u-text-5">Comment</h3>
         <div class="u-list u-list-1">
             <div class="u-repeater u-repeater-1">
-                
-                  @if (ViewBag.AnimalComments != null)
+
+                @if (ViewBag.AnimalComments != null)
                 {
                     foreach (var comment in ViewBag.AnimalComments)
                     {
@@ -36,13 +36,17 @@
         </div>
 
         <div class="u-form u-form-1">
-            <form action="https://forms.nicepagesrv.com/Form/Process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form-1" style="padding: 10px;">
+            <form method="post" asp-action="Addcomment" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form-1" style="padding: 10px;">
                 <div class="u-form-group u-form-message">
                     <label for="message-611d" class="u-label">commant</label>
-                    <textarea placeholder="Enter your commnet" rows="4" cols="50" id="message-611d" name="message" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required=""></textarea>
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" placeholder="Enter your commnet" rows="4" cols="50" id="message-611d" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required=""></textarea>
+                    <span asp-validation-for="Description"></span>
+
+                    <label asp-for="AnimalId" style="visibility:visible;">@Model.AnimalId</label>
                 </div>
                 <div class="u-align-center u-form-group u-form-submit">
-                    <a href="#" class="u-btn u-btn-round u-btn-submit u-button-style u-radius-40 u-btn-1">Submit</a>
+                    <a asp-action="Addcomment" asp-controller=" Animal" class="u-btn u-btn-round u-btn-submit u-button-style u-radius-40 u-btn-1">Add commnet</a>
                     <input type="submit" value="submit" class="u-form-control-hidden">
                 </div>
                 <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>

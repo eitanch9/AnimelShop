@@ -32,8 +32,14 @@ namespace WebApplicationAnimel.Controllers
             return View(animals.FindById(Id));
         }
 
-        public IActionResult addCommentPage(int Id) => View(animals.FindById(Id));
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddComment()
+        {
+            return RedirectToAction("Details");
+
+        }
 
     }
 }

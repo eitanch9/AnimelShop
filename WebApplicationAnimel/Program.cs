@@ -4,6 +4,7 @@ using Model.DAL;
 using Model.Models;
 using Model.Repository;
 
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddTransient<AnimalRepository>();

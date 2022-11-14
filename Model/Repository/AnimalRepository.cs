@@ -50,6 +50,12 @@ namespace Model.Repository
         {
             return _data.Animals.Include(c => c.Comments).FirstOrDefault(x => x.AnimalId == Id);
         }
+
+
+        public async void SaveAsync()
+        {
+           await _data.SaveChangesAsync();
+        }
     }
 
 }

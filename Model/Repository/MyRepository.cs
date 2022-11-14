@@ -25,7 +25,7 @@ namespace Model.Repository
 
         }
 
-        protected void Save()
+        public void Save()
         {
             _data.SaveChanges();
         }
