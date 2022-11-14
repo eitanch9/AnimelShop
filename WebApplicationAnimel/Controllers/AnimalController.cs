@@ -14,15 +14,15 @@ namespace WebApplicationAnimel.Controllers
             category = RCategorys; animals = RAnimals;
         }
 
-        public IActionResult Animals(string categoryName)
+        public IActionResult Animals(int Id)
         {
             var categories = category.GetItems();
             ViewBag.Categories = categories;
-            var Animals = (animals.ShoeAnimalByCategory(categoryName));
+            var Animals = (animals.ShoeAnimalByCategory(Id));
             if (Animals == null)
             {
-                categoryName = "All";
-                Animals = animals.ShoeAnimalByCategory(categoryName); }
+                Id = 0;
+                Animals = animals.ShoeAnimalByCategory(Id); }
             return View(Animals);
         }
         public IActionResult Details(int Id)

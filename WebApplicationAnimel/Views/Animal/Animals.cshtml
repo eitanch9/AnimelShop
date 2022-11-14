@@ -4,8 +4,20 @@
     ViewData["Title"] = "Animals";
 }
 
-<body>
 
+<script>
+    
+$(document).ready(function () {
+    $('#Categories').change(function () {
+        let selectedValue = $('#Categories').val();
+        window.location.href ="/Animal/Animals/"+selectedValue
+    })
+})
+
+</script>
+
+<body>
+    
     <section class="u-align-center u-clearfix u-palette-4-light-2 u-section-2">
         <div class="u-expanded-width u-palette-4-base u-shape u-shape-rectangle u-shape-1"></div>
         <div class="u-align-center u-container-style u-group u-shape-rectangle u-group-1">
@@ -13,14 +25,14 @@
                 <h2 class="u-align-center u-custom-font u-font-lobster u-text u-text-1">The animal in the shop</h2>
             </div>
         </div>
-        @Html.Partial("_CategorySelector")
+            @Html.Partial("_CategorySelector")
         <div class="u-gallery u-layout-grid u-lightbox u-show-text-on-hover u-gallery-1">
             <div class="u-gallery-inner u-gallery-inner-1">
                 @foreach (var item in Model)
                 {
                     <div class="u-effect-fade u-effect-hover-zoom u-gallery-item u-shape-rectangle">
                         <div class="u-back-slide" data-image-width="872" data-image-height="872" style="width: 20rem; height: 20rem;">
-                            <img class="u-back-image u-expanded" src="..//@item.PictureLink" style="width: 20rem; height: 20rem;">
+                            <img class="u-back-image u-expanded" src="..\..\@item.PictureLink" style="width: 20rem; height: 20rem;">
                         </div>
                         <a asp-action="Details" asp-route-Id="@item.AnimalId" asp-controller="Animal">
                             <div class="u-over-slide u-shading u-over-slide-1">

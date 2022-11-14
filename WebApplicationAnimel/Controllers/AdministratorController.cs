@@ -8,8 +8,18 @@ namespace WebApplicationAnimel.Controllers
     {
         private AnimalRepository animals;
 
-        public AdministratorController(AnimalRepository repository) => animals = repository;
-        public IActionResult Administrator(string categoryName) => View(animals.ShoeAnimalByCategory(categoryName));
+        private CategortyRepository category;
+
+        public AdministratorController(AnimalRepository RAnimals, CategortyRepository RCategorys)
+        {
+            category = RCategorys; animals = RAnimals;
+        }
+        public IActionResult Administrator(int Id)
+        {
+            var categories = category.GetItems();
+            ViewBag.Categories = categories;
+            return View(animals.ShoeAnimalByCategory(Id));
+        }
         public IActionResult AddAnimalPage() => View();
 
         public IActionResult EditAnimalPage(int Id) => View(animals.FindById(Id));

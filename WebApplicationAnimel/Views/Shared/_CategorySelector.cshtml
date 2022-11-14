@@ -1,12 +1,13 @@
 ﻿@using Model.Models
 
+<script src="~/js/myjavascript.js"></script>
 <div>
   
-    <select class="Categories">
-        <option selected value="All">All category</option>
+    <select id="Categories">
+        <option selected value="0">All category</option>
         @foreach (var item in ViewBag.Categories)
         {
-            <option value="@item.Name">@item.Name</option>
+            <option value="@item.CategoryId">@item.Name</option>
         }
 
     </select>

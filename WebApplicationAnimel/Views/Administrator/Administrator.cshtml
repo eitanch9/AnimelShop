@@ -1,7 +1,48 @@
-﻿
+﻿@using Model.Models
+@model IEnumerable<Animal>
 @{
     ViewData["Title"] = "Administrator";
 }
 
 <h1>Administrator</h1>
 
+@Html.Partial("_CategorySelector")
+
+
+<script>
+
+    $(document).ready(function () {
+        $('#Categories').change(function () {
+            let selectedValue = $('#Categories').val();
+            window.location.href = "/Administrator/Administrator/" + selectedValue
+        })
+    })
+
+</script>
+
+
+
+<section class="u-clearfix u-gradient u-section-3" id="sec-b39b">
+    <div class="u-expanded-width u-list u-list-1">
+        <div class="u-repeater u-repeater-1">
+                @foreach (var item in Model)
+                {
+            <div class="u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-1">
+                        <img class="u-image u-image-round u-radius-10 u-image-1" src="../../@item.PictureLink" alt="" data-image-width="1280" data-image-height="739">
+                    <p class="u-custom-font u-font-oswald u-text u-text-2">Age: @item.Age</p>
+                    <a href="" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-4-dark-2 u-radius-50 u-text-black u-btn-1">
+                        Edit<br>
+                    </a>
+                    <a href="" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-4-dark-2 u-radius-50 u-text-black u-btn-2">
+                        Delete<br>
+                    </a>
+                    <p class="u-custom-font u-font-oswald u-text u-text-3">Name: @item.Name</p>
+                </div>
+                </div>
+                <br/>
+                <br/>
+                }
+        </div>
+    </div>
+</section>

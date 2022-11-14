@@ -41,9 +41,9 @@ namespace Model.Models
 
         [Display(Name = "Category:")]
         [Required(ErrorMessage = "Category")]
-        public Category? Category { get; set; }
+        public virtual Category? Category { get; set; }
 
-        public List<Comment>? Comments { get; set; }
+        public virtual List<Comment>? Comments { get; set; }
 
 
         public override bool Equals(object? obj)

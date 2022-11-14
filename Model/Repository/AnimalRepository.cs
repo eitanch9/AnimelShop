@@ -30,11 +30,11 @@ namespace Model.Repository
             return false;
         }
 
-        public IEnumerable<Animal>? ShoeAnimalByCategory(string categoryName)
+        public IEnumerable<Animal>? ShoeAnimalByCategory(int Id)
         {
-            if (categoryName == null) { return null!; }
-            if (categoryName == "All") { return GetItems(); }
-            var category = _data.Categories!.SingleOrDefault(c => c.Name == categoryName);
+            
+            if (Id == 0) { return GetItems(); }
+            var category = _data.Categories!.SingleOrDefault(c => c.CategoryId == Id);
             if (category == null) { return null; }
             return _data.Animals.Where(a => a.Category!.CategoryId == category.CategoryId).AsQueryable();
         }
