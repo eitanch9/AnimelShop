@@ -3,11 +3,13 @@
 
   <h3>Select category</h3>
     <select id="Categories">
-        <option selected value="0">All category</option>
+        <option selected value="">select category</option>
+        <option  value="0">All category</option>
         @foreach (var item in ViewBag.Categories)
         {
             <option value="@item.CategoryId">@item.Name</option>
         }
 
     </select>
+    <h2 id="TheCategory"></h2>
 </div>

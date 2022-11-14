@@ -11,8 +11,14 @@
 <script>
 
     $(document).ready(function () {
+       
         $('#Categories').change(function () {
+
             let selectedValue = $('#Categories').val();
+
+            //let textCategory = $('#TheCategory');
+            //textCategory.text($("#Categories option:selected").text());
+
             window.location.href = "/Administrator/Administrator/" + selectedValue
         })
     })
@@ -30,10 +36,10 @@
                 <div class="u-container-layout u-similar-container u-container-layout-1">
                         <img class="u-image u-image-round u-radius-10 u-image-1" src="../../@item.PictureLink" alt="" data-image-width="1280" data-image-height="739">
                     <p class="u-custom-font u-font-oswald u-text u-text-2">Age: @item.Age</p>
-                    <a href="" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-4-dark-2 u-radius-50 u-text-black u-btn-1">
+                        <a asp-action="EditAnimalPage" asp-controller="Administrator" asp-route-Id="@item.AnimalId" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-4-dark-2 u-radius-50 u-text-black u-btn-1">
                         Edit<br>
                     </a>
-                    <a href="" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-4-dark-2 u-radius-50 u-text-black u-btn-2">
+                        <a asp-action="RemoveAnimal" asp-controller="Administrator" asp-route-Id="@item.AnimalId" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-4-dark-2 u-radius-50 u-text-black u-btn-2">
                         Delete<br>
                     </a>
                     <p class="u-custom-font u-font-oswald u-text u-text-3">Name: @item.Name</p>

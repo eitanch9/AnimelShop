@@ -33,15 +33,13 @@ namespace Model.Repository
         public bool Remove(T entity)
         {
             if (entity == null) { return false; }
-            if (FindByReference(entity) == null) { return false; }
-      
            _data.Set<T>().Remove(entity);
             Save();
             return true;      
         
         }
 
-        public T FindByReference(T entity) => GetItems().SingleOrDefault(entity);           
+        public T FindByReference(T entity) => GetItems().FirstOrDefault(entity);           
         
         public IEnumerable<T> GetItems()=> _data.Set<T>().AsEnumerable();
 

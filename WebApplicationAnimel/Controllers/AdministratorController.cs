@@ -24,6 +24,14 @@ namespace WebApplicationAnimel.Controllers
 
         public IActionResult EditAnimalPage(int Id) => View(animals.FindById(Id));
 
+        public IActionResult RemoveAnimal(int Id)
+        {
+            var Animal = animals.FindById(Id);
+            animals.Remove(Animal);
+            return RedirectToAction("Administrator");
+
+        }
+
 
     }
 }
