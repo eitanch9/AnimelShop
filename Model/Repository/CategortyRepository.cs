@@ -14,11 +14,11 @@ namespace Model.Repository
         private AnimalsContext _data { get; set; }
         public CategortyRepository(AnimalsContext Data) : base(Data){ _data = Data; }
 
-        public override bool Edit(Category entity)
+        public override bool Edit(Category entity, int Id)
         {
             if (entity == null) { return false; }
 
-            var oldCategory = _data.Set<Category>().Where(category => category.CategoryId == entity.CategoryId).SingleOrDefault();
+            var oldCategory = _data.Set<Category>().Where(category => category.CategoryId == Id).SingleOrDefault();
             if (oldCategory != null && !oldCategory.Equals(entity))
             {
                 _data.Set<Category>().Remove(oldCategory);

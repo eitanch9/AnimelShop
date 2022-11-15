@@ -13,7 +13,7 @@ namespace Model.Repository
         bool Remove(T entity);
 
 
-        bool Edit(T t);
+        bool Edit(T t ,int Id);
 
 
 

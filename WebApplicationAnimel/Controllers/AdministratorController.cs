@@ -4,7 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Model.Models;
 using Model.Repository;
+using NuGet.Protocol.Core.Types;
+using System;
 using System.Diagnostics.Metrics;
+using System.Xml;
 using static Microsoft.VisualStudio.Services.Graph.GraphResourceIds;
 
 namespace WebApplicationAnimel.Controllers
@@ -15,34 +18,18 @@ namespace WebApplicationAnimel.Controllers
 
         private CategortyRepository category;
 
-        public AdministratorController(AnimalRepository RAnimals, CategortyRepository RCategorys)
+        private readonly IWebHostEnvironment _webHost;
+
+        public AdministratorController(AnimalRepository RAnimals, CategortyRepository RCategorys, IWebHostEnvironment webHost)
         {
             category = RCategorys; animals = RAnimals;
+            _webHost = webHost;
         }
         public IActionResult Administrator(int Id)
         {
             var categories = category.GetItems();
             ViewBag.Categories = categories;
             return View(animals.ShoeAnimalByCategory(Id));
-        }
-        public IActionResult AddAnimalPage()
-        {
-            var categories = category.GetItems();
-            ViewBag.Categories = categories;
-            return View();
-        }
-        public IActionResult EditAnimalPage(int Id)
-        {
-            var categories = category.GetItems();
-            ViewBag.Categories = categories;
-            return View(animals.FindById(Id));
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult EditAnimal(int Id)
-        {
-            return RedirectToAction("EditAnimalPage");
         }
 
 
@@ -53,44 +40,74 @@ namespace WebApplicationAnimel.Controllers
             return RedirectToAction("Administrator");
         }
 
-
-      
-
-
-#if (njsnd)
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateMember(AnimalViewModel model, IFormFile photo)
+        public IActionResult AddAnimalPage()
         {
-            if (photo == null)  { return Content("File not selected");}
-            var path = Path.Combine(_environments.WebRootPath, "Assets\\", photo.FileName);
-            using (FileStream stream = new FileStream(path, FileMode.Create))
-            {
-                await photo.CopyToAsync(stream);
-                stream.Close();
-            }
-
-            model.Animal.PictureLink = "Assets\\"+photo.FileName;
-
-            if (model != null)
-            {
-                var animal = new Animal
-                {
-                    Name = model.Animal.Name,
-                    Age = model.Animal.Age,
-                    Description = model.Animal.Description,
-                    PictureLink = model.Animal.PictureLink,
-                  
-                };
-               animals.Add(animal);
-               animals.SaveAsync();
-            }
-            return RedirectToAction("MemberList");
-
+            var categories = category.GetItems();
+            ViewBag.Categories = categories;
+            return View();
         }
-#endif
 
+        [HttpPost]
+        public async Task<IActionResult> AddAnimal(string Name, int Age, IFormFile Image, string Description, int CategoryId)
+        {
+            if (ModelState.IsValid)
+            {
+                var SaveImg = Path.Combine(_webHost.WebRootPath, "Assets", Image.FileName);
+                string ImgText = Path.GetExtension(Image.FileName);
+                if (ImgText == ".jpg" || ImgText == ".jfif")
+                {
+                    using (var uplaoding = new FileStream(SaveImg, FileMode.Create))
+                    {
+                        await Image.CopyToAsync(uplaoding);
+                    }
+                    var animal = new Animal { Name = Name, Age = Age, CategoryId = CategoryId, Description = Description, PictureLink = Image.FileName };
+                    animals.Add(animal);
+                    return RedirectToAction("AddAnimalPage");
+                }
+                else
+                {
+                    ViewData["FileMessage"] = "only Images with extension .jpg or .jfif can be uploaded";
+                    return View();
+                }
+
+            }
+            return RedirectToAction($"AddAnimalPage", "Administrator");
+        }
+
+        public IActionResult EditAnimalPage(int Id)
+        {
+            var categories = category.GetItems();
+            ViewBag.Categories = categories;
+            return View(animals.FindById(Id));
+        }
+       
+        [HttpPost]
+        public async Task<IActionResult> EditAnimal(int Id,string Name, int Age, IFormFile Image, string Description, int CategoryId)
+        {
+            if (ModelState.IsValid)
+            {
+                var SaveImg = Path.Combine(_webHost.WebRootPath, "Assets", Image.FileName);
+                string ImgText = Path.GetExtension(Image.FileName);
+                if (ImgText == ".jpg" || ImgText == ".jfif")
+                {
+                    using (var uplaoding = new FileStream(SaveImg, FileMode.Create))
+                    {
+                        await Image.CopyToAsync(uplaoding);
+                    }
+                    var animal = new Animal { Name = Name, Age = Age, CategoryId = CategoryId, Description = Description, PictureLink = Image.FileName };
+                    animals.Edit(animal,Id);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewData["FileMessage"] = "only Images with extension .jpg or .jfif can be uploaded";
+                    return View();
+                }
+
+            }
+            return RedirectToAction($"EditAnimalPage", "Administrator",Id);
+        }
 
     }
+
 }

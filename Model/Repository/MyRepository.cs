@@ -44,7 +44,7 @@ namespace Model.Repository
         public IEnumerable<T> GetItems()=> _data.Set<T>().AsEnumerable();
 
 
-        public abstract  bool Edit(T entity);
+        public abstract  bool Edit(T entity, int Id);
 
         public abstract T FindById(int Id);
 

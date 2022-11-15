@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -33,12 +35,12 @@ namespace Model.Models
         public string? Description { get; set; }
 
         [Display(Name = "Picture Link:")]
+        [OnlyImageAttribute]
         [Required(ErrorMessage = "Please enter Picture Link.")]
         public string? PictureLink { get; set; }
 
         [ForeignKey("CategoryId")]
         [Display(Name = "Category id:")]
-        [Required(ErrorMessage = "Please enter Category.")]
         public int CategoryId { get; set; }
 
         [Display(Name = "Category:")]
@@ -62,4 +64,22 @@ namespace Model.Models
         }
     }
 
+    public class OnlyImageAttribute : ValidationAttribute
+    {
+        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+        {
+
+
+            if (value is IFormFile file != default)
+            {
+
+                if (file.ContentType.Contains("image")) { return ValidationResult.Success; }
+
+
+                else { return new ValidationResult("This is not an image file"); }
+            }
+
+            return new ValidationResult("Please enter an image File");
+        }
+    }
 }

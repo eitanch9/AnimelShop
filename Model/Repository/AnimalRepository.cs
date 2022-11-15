@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Model.DAL;
 using Model.Models;
 
@@ -15,11 +16,11 @@ namespace Model.Repository
         public IEnumerable<Animal> ShowNumOfAnimalsWithTheMostComment(int numofAnimalReturn)
         { return _data.Animals.OrderByDescending(animal => animal.Comments!.Count).Take(numofAnimalReturn); }
 
-        public override bool Edit(Animal entity)
+        public override bool Edit(Animal entity, int Id )
         {
             if (entity == null) { return false; }
 
-            var oldAnimal = _data.Set<Animal>().Where(animal => animal.AnimalId == entity.AnimalId).SingleOrDefault();
+            var oldAnimal = _data.Set<Animal>().Where(animal => animal.AnimalId == Id).SingleOrDefault();
             if (oldAnimal != null && !oldAnimal.Equals(entity))
             {
                 _data.Set<Animal>().Remove(oldAnimal);
@@ -29,10 +30,10 @@ namespace Model.Repository
             }
             return false;
         }
-
+        
         public IEnumerable<Animal>? ShoeAnimalByCategory(int Id)
         {
-            
+           
             if (Id == 0) { return GetItems(); }
             var category = _data.Categories!.SingleOrDefault(c => c.CategoryId == Id);
             if (category == null) { return null; }
@@ -54,7 +55,7 @@ namespace Model.Repository
 
         public async void SaveAsync()
         {
-           await _data.SaveChangesAsync();
+            await _data.SaveChangesAsync();
         }
     }
 

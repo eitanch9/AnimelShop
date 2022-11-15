@@ -15,11 +15,11 @@ namespace Model.Repository
         private AnimalsContext _data { get; set; }
         public CommentRepoditory(AnimalsContext Data) : base(Data) { _data = Data; }
 
-        public override bool Edit(Comment entity)
+        public override bool Edit(Comment entity , int Id)
         {
             if (entity == null) { return false; }
 
-            var oldComment = _data.Set<Comment>().Where(comment => comment.CommentId == entity.CommentId).SingleOrDefault();
+            var oldComment = _data.Set<Comment>().Where(comment => comment.CommentId == Id).SingleOrDefault();
             if (oldComment != null && !oldComment.Equals(entity))
             {
                 _data.Set<Comment>().Remove(oldComment);
