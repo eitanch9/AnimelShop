@@ -23,6 +23,7 @@ namespace Model.Repository
             var oldAnimal = _data.Set<Animal>().Where(animal => animal.AnimalId == Id).SingleOrDefault();
             if (oldAnimal != null && !oldAnimal.Equals(entity))
             {
+                entity.Comments = GetCommentById(Id).ToList();
                 _data.Set<Animal>().Remove(oldAnimal);
                 _data.Set<Animal>().Add(entity);
                 Save();
@@ -43,7 +44,7 @@ namespace Model.Repository
         public IEnumerable<Comment>? GetCommentById(int Id)
         {
             if (Id == 0) { return null; }
-            return FindById(Id).Comments.AsQueryable();
+            return FindById(Id)?.Comments?.AsQueryable();
         }
 
 

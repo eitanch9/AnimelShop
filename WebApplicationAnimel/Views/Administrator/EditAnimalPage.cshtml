@@ -9,7 +9,7 @@
         <h1 class="u-custom-font u-font-lobster u-text u-text-default u-text-1">Edit Animal</h1>
         <a asp-action="Administrator" asp-controller="Administrator" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-4-dark-2 u-radius-50 u-text-body-color u-btn-1">Back</a>
         <div class="u-form u-form-1">
-            <form asp-action="EditAnimal" asp-controller="Administrator" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+            <form enctype="multipart/form-data" asp-action="EditAnimal" asp-controller="Administrator" asp-route-Id="@Model.AnimalId" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
 
                 <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-1">
                     <label for="text-bb33" class="u-custom-font u-font-oswald u-label u-spacing-0 u-label-1">Name</label>
@@ -45,14 +45,12 @@
                     <span class="text-danger" asp-validation-for="@Model.Description"></span>
                 </div>
                 <div>
-                    <label asp-for="@Model.PictureLink" class="u-custom-font u-font-oswald u-label u-spacing-0 u-label-1">add image for the animal</label>
-                    <input class="form-control form-control-lg" id="formFileLg" type="file">
-                    <img class="u-image u-image-round u-radius-10 u-image-1" src="../../@Model.PictureLink" alt="" data-image-width="1280" data-image-height="739"><div>
-                    </div>
+                     <label class="u-custom-font u-font-oswald u-label u-spacing-0 u-label-1">add image for the animal</label>
+                    <input value="@Model.PictureLink" asp-for="@Model.PictureLink" type="file" name="Image" class="form-control form-control-lg" id="Image">
+                    <span asp-validation-for="@Model.PictureLink"></span>
                 </div>
 
-                <input value="Edit" type="submit" class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-palette-4-dark-2 u-radius-23 u-text-body-color u-btn-2" />
-
+                 <input value="Edit" type="submit" class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-palette-4-dark-2 u-radius-23 u-text-body-color u-btn-2" />
             </form>
         </div>
     </div>

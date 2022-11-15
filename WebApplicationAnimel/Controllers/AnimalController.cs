@@ -9,9 +9,12 @@ namespace WebApplicationAnimel.Controllers
         private AnimalRepository animals;
         private CategortyRepository category;
 
-        public AnimalController(AnimalRepository RAnimals, CategortyRepository RCategorys)
+        private CommentRepoditory comments;
+
+
+        public AnimalController(AnimalRepository RAnimals, CategortyRepository RCategorys, CommentRepoditory RComment)
         {
-            category = RCategorys; animals = RAnimals;
+            category = RCategorys; animals = RAnimals; comments = RComment;
         }
 
         public IActionResult Animals(int Id)
@@ -22,23 +25,27 @@ namespace WebApplicationAnimel.Controllers
             if (Animals == null)
             {
                 Id = 0;
-                Animals = animals.ShoeAnimalByCategory(Id); }
+                Animals = animals.ShoeAnimalByCategory(Id);
+            }
             return View(Animals);
         }
         public IActionResult Details(int Id)
         {
             ViewBag.AnimalComments = animals.GetCommentById(Id);
-            ViewBag.CategoryName= category.FindById(animals.FindById(Id).CategoryId).Name;
+            ViewBag.CategoryName = category.FindById(animals.FindById(Id).CategoryId).Name;
             return View(animals.FindById(Id));
         }
 
-
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult AddComment()
+        public async Task<IActionResult> AddComment(string CommentText, int AnimalId)
         {
-            return RedirectToAction("Details");
+            if (ModelState.IsValid)
+            {
+                var NewComment=new Comment { AnimalId= AnimalId, CommentText=CommentText };
+                comments.Add(NewComment);
+            }
 
+            return RedirectToAction(  actionName: "Details" , new {Id= AnimalId } ); 
         }
 
     }

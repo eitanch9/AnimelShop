@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Graph;
 using Model.Models;
 using Model.Repository;
 using NuGet.Protocol.Core.Types;
@@ -60,8 +61,9 @@ namespace WebApplicationAnimel.Controllers
                     {
                         await Image.CopyToAsync(uplaoding);
                     }
-                    var animal = new Animal { Name = Name, Age = Age, CategoryId = CategoryId, Description = Description, PictureLink = Image.FileName };
+                    var animal = new Animal { Name = Name, Age = Age, CategoryId = CategoryId, Description = Description, PictureLink ="Assets/"+ Image.FileName };
                     animals.Add(animal);
+                   
                     return RedirectToAction("AddAnimalPage");
                 }
                 else
@@ -84,6 +86,10 @@ namespace WebApplicationAnimel.Controllers
         [HttpPost]
         public async Task<IActionResult> EditAnimal(int Id,string Name, int Age, IFormFile Image, string Description, int CategoryId)
         {
+            if (Image==null&&false)
+            { string filePath = animals.FindById(Id).PictureLink;
+                Image = (IFormFile?)System.IO.File.OpenRead(filePath);
+            }
             if (ModelState.IsValid)
             {
                 var SaveImg = Path.Combine(_webHost.WebRootPath, "Assets", Image.FileName);
@@ -94,9 +100,10 @@ namespace WebApplicationAnimel.Controllers
                     {
                         await Image.CopyToAsync(uplaoding);
                     }
-                    var animal = new Animal { Name = Name, Age = Age, CategoryId = CategoryId, Description = Description, PictureLink = Image.FileName };
+                    var animal = new Animal { Name = Name, Age = Age, CategoryId = CategoryId, Description = Description, PictureLink = "Assets/" + Image.FileName };
                     animals.Edit(animal,Id);
-                    return RedirectToAction("Index");
+
+                    return RedirectToAction(actionName: "Details", "Animal" , new { Id = animal.AnimalId });
                 }
                 else
                 {
@@ -105,7 +112,7 @@ namespace WebApplicationAnimel.Controllers
                 }
 
             }
-            return RedirectToAction($"EditAnimalPage", "Administrator",Id);
+            return RedirectToAction($"EditAnimalPage", "Administrator",new { Id = Id });
         }
 
     }

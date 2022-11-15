@@ -17,8 +17,6 @@ namespace Model.Repository
         public bool Add(T entity)
         {
             if (entity == null) { return false; }
-            if (FindByReference(entity) != null) { return false; }
-
             _data.Set<T>().Add(entity);
             Save();
             return true;
