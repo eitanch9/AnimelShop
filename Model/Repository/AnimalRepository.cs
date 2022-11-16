@@ -23,9 +23,12 @@ namespace Model.Repository
             var oldAnimal = _data.Set<Animal>().Where(animal => animal.AnimalId == Id).SingleOrDefault();
             if (oldAnimal != null && !oldAnimal.Equals(entity))
             {
-                entity.Comments = GetCommentById(Id).ToList();
-                _data.Set<Animal>().Remove(oldAnimal);
-                _data.Set<Animal>().Add(entity);
+                oldAnimal.Age = entity.Age;
+                oldAnimal.PictureLink = entity.PictureLink;
+                oldAnimal.Name= entity.Name;
+                oldAnimal.CategoryId = entity.CategoryId;
+                oldAnimal.Category= entity.Category;
+                oldAnimal.Description = entity.Description;
                 Save();
                 return true;
             }

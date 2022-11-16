@@ -6,8 +6,8 @@
 
 <section class="u-align-center u-clearfix u-gradient u-section-2" id="sec-6b04">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-custom-font u-font-lobster u-text u-text-default u-text-1">Add Animal</h1>
-        <a asp-action="Administrator" asp-controller="Administrator" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-4-dark-2 u-radius-50 u-text-body-color u-btn-1">Back</a>
+
+        <h1 class="u-custom-font u-font-lobster ">Add Animal</h1>
         <div class="u-form u-form-1">
             <form enctype="multipart/form-data" asp-action="AddAnimal" asp-controller="Administrator" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
 
@@ -43,9 +43,12 @@
                     <input asp-for="@Model.PictureLink" type="file" name="Image" class="form-control form-control-lg" id="Image">
                     <span asp-validation-for="@Model.PictureLink"></span>
                 </div>
-
-                <input value="Add Animal" type="submit" class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-palette-4-dark-2 u-radius-23 u-text-body-color u-btn-2" />
-
+               
+                    <div class="p-2 d-flex justify-content-start">
+                        <input value="Add Animal" type="submit" class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-palette-4-dark-2 u-radius-23 u-text-body-color u-btn-2" />
+                        <a asp-action="Administrator" asp-controller="Administrator" class=" u-border-none u-btn-round u-button-style u-palette-4-dark-2 u-radius-23 u-text-body-color u-btn-2">Back</a>
+                    </div>
+                
             </form>
         </div>
     </div>

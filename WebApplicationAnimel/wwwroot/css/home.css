@@ -8,6 +8,11 @@
   margin-bottom: 60px;
 }
 
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+}
+
 .u-section-1 .u-repeater-1 {
   grid-template-columns: 50% 50%;
   min-height: 453px;

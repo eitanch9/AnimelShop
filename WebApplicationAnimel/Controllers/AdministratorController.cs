@@ -86,10 +86,7 @@ namespace WebApplicationAnimel.Controllers
         [HttpPost]
         public async Task<IActionResult> EditAnimal(int Id,string Name, int Age, IFormFile Image, string Description, int CategoryId)
         {
-            if (Image==null&&false)
-            { string filePath = animals.FindById(Id).PictureLink;
-                Image = (IFormFile?)System.IO.File.OpenRead(filePath);
-            }
+           
             if (ModelState.IsValid)
             {
                 var SaveImg = Path.Combine(_webHost.WebRootPath, "Assets", Image.FileName);

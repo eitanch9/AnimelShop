@@ -9,12 +9,12 @@
     <section class="u-clearfix u-section-1" id="sec-8b85">
         <div class="u-clearfix u-sheet u-sheet-1">
             <div class="u-expanded-width u-list u-list-1">
-                <div class="u-repeater u-repeater-1">
+                <div class=" u-repeater u-repeater-1">
                     @foreach (var item in Model)
                     {
                         <div class="u-container-style u-list-item u-repeater-item">
                             <div class="u-container-layout u-similar-container u-container-layout-1">
-                                <h3 class="u-text u-text-default u-text-1">@item.Name</h3>
+                                <h3 class="text-start u-custom-font u-font-lobster u-text u-text-default u-text-3 ">@item.Name</h3>
                                 <img class=" u-radius-45" src=@item.PictureLink alt="Animal Photo" width="200" height="200">
                                 <a asp-controller="Animal" asp-action="Details" asp-route-Id="@item.AnimalId" class="u-active-none u-border-2 u-border-hover-palette-2-base u-border-palette-2-light-1 u-btn u-button-style u-hover-none u-none u-text-body-color u-btn-1">learn more</a>
                             </div>
