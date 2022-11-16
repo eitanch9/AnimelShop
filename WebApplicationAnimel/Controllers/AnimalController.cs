@@ -37,15 +37,17 @@ namespace WebApplicationAnimel.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddComment(string CommentText, int AnimalId)
+        public IActionResult AddComment(string CommentText, int AnimalId)
         {
             if (ModelState.IsValid)
             {
                 var NewComment=new Comment { AnimalId= AnimalId, CommentText=CommentText };
                 comments.Add(NewComment);
             }
-
-            return RedirectToAction("Details", new {Id= AnimalId } ); 
+            return View(Details);
+           // return Redirect($"~/Animal/Details/{AnimalId}");
+           // return RedirectToAction("Index", "Home");
+           // return RedirectToAction("Details", new {Id= AnimalId } ); 
         }
 
     }
