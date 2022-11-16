@@ -23,7 +23,7 @@
                 <div class="u-form-group u-form-select u-label-left u-form-group-5">
                     <div class="u-form-select-wrapper">
                         <label for="Category" class="u-custom-font u-font-oswald u-label u-spacing-0 u-label-5">The categories</label>
-                        <select asp-for=@Model.Category id="Categories" name="categories">
+                        <select id="Categories" name="CategoryId">
                             @foreach (var item in ViewBag.Categories)
                             {
                                 if (Model.CategoryId == item.CategoryId)
@@ -46,7 +46,7 @@
                 </div>
                 <div>
                     <label for="Image" class="u-custom-font u-font-oswald u-label u-spacing-0 u-label-1">add image for the animal</label>
-                    <input class="form-control form-control-lg" id="Image" name="Image" type="file">
+                    <input  class="form-control form-control-lg" id="Image" name="Image" type="file">
                     <span class="text-danger" asp-validation-for="@Model.PictureLink"></span>
                     <img class="u-image u-image-round u-radius-10 u-image-1" src="../../@Model.PictureLink" alt="" data-image-width="1280" data-image-height="739"><div>
                     </div>

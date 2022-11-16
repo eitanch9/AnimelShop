@@ -45,7 +45,7 @@ namespace WebApplicationAnimel.Controllers
                 comments.Add(NewComment);
             }
 
-            return RedirectToAction(  actionName: "Details" , new {Id= AnimalId } ); 
+            return RedirectToAction("Details", new {Id= AnimalId } ); 
         }
 
     }

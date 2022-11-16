@@ -58,7 +58,7 @@ namespace Model.Models
             if (this.Name != other!.Name) return false;
             if (this.Age != other!.Age) return false;
             if (this.Description != other!.Description) return false;
-            if (!this.Category!.Equals(other!.Category)) return false;
+            if (this.CategoryId != other.CategoryId) return false;
             return true;
 
         }

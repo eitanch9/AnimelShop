@@ -27,7 +27,6 @@ namespace Model.Repository
                 oldAnimal.PictureLink = entity.PictureLink;
                 oldAnimal.Name= entity.Name;
                 oldAnimal.CategoryId = entity.CategoryId;
-                oldAnimal.Category= entity.Category;
                 oldAnimal.Description = entity.Description;
                 Save();
                 return true;

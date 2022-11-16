@@ -64,7 +64,7 @@ namespace WebApplicationAnimel.Controllers
                     var animal = new Animal { Name = Name, Age = Age, CategoryId = CategoryId, Description = Description, PictureLink ="Assets/"+ Image.FileName };
                     animals.Add(animal);
                    
-                    return RedirectToAction("AddAnimalPage");
+                    return RedirectToAction("Administrator", "Administrator");
                 }
                 else
                 {
@@ -95,12 +95,12 @@ namespace WebApplicationAnimel.Controllers
                 {
                     using (var uplaoding = new FileStream(SaveImg, FileMode.Create))
                     {
-                        await Image.CopyToAsync(uplaoding);
+                      await Image.CopyToAsync(uplaoding);
                     }
                     var animal = new Animal { Name = Name, Age = Age, CategoryId = CategoryId, Description = Description, PictureLink = "Assets/" + Image.FileName };
-                    animals.Edit(animal,Id);
+                   var edit= animals.Edit(animal,Id);
 
-                    return RedirectToAction(actionName: "Details", "Animal" , new { Id = animal.AnimalId });
+                    return RedirectToAction("Administrator" , "Administrator");
                 }
                 else
                 {
