@@ -26,6 +26,9 @@ namespace WebApplicationAnimel.Controllers
             category = RCategorys; animals = RAnimals;
             _webHost = webHost;
         }
+
+
+
         public IActionResult Administrator(int Id)
         {
             var categories = category.GetItems();

@@ -41,13 +41,14 @@ namespace WebApplicationAnimel.Controllers
         {
             if (ModelState.IsValid)
             {
-                var NewComment=new Comment { AnimalId= AnimalId, CommentText=CommentText };
+                var NewComment = new Comment { AnimalId = AnimalId, CommentText = CommentText };
                 comments.Add(NewComment);
             }
-            return View(Details);
-           // return Redirect($"~/Animal/Details/{AnimalId}");
-           // return RedirectToAction("Index", "Home");
-           // return RedirectToAction("Details", new {Id= AnimalId } ); 
+            return View(nameof(Details), animals.FindById(AnimalId));
+
+            // return Redirect($"~/Animal/Details/{AnimalId}");
+            //return RedirectToAction("Index", "Home");
+            // return RedirectToAction("Details", new {Id= AnimalId } ); 
         }
 
     }

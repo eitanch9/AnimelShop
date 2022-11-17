@@ -3,7 +3,7 @@ using Model.Models;
 
 namespace TestProject
 {
-    public class Tests
+    public class ModelTests
     {
 
 
@@ -50,4 +50,5 @@ namespace TestProject
             Assert.IsFalse(category1.Equals(category3));
         }
     }
+
 }

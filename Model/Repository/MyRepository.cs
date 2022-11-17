@@ -20,7 +20,6 @@ namespace Model.Repository
             _data.Set<T>().Add(entity);
             Save();
             return true;
-
         }
 
         public void Save()
@@ -45,10 +44,6 @@ namespace Model.Repository
         public abstract  bool Edit(T entity, int Id);
 
         public abstract T FindById(int Id);
-
-
-
-
 
     }
 }

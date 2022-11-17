@@ -39,10 +39,10 @@
         </div>
 
         <div class="u-form u-form-1">
-            <form asp-action="AddComment" asp-controller="Animal" asp-route-AnimalId="@Model.AnimalId" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"  name="form-1" style="padding: 10px;">
+            <form asp-action="AddComment" asp-route-AnimalId="@Model.AnimalId" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px;">
                 <div class="u-form-group u-form-message">
-                    <label for="message-611d" class="u-label">commant</label>
-                    <textarea name="CommentText" placeholder="Enter your commnet" rows="4" cols="50" id="message-611d" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required=""></textarea>
+                    <label class="u-label">commant</label>
+                    <textarea name="CommentText" placeholder="Enter your commnet" rows="4" cols="50" id="message-611d" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" @*required=""*@></textarea>
                    
                 </div>
 

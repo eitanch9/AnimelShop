@@ -14,11 +14,5 @@ namespace Model.Repository
 
 
         bool Edit(T t ,int Id);
-
-
-
-
-
-
     }
 }
