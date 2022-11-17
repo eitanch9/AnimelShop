@@ -8,13 +8,10 @@ namespace Model.Repository
 {
     public class AnimalRepository : MyRepository<Animal, AnimalsContext>
     {
-        private AnimalsContext _data;
+        public AnimalRepository(AnimalsContext Data) : base(Data) { }
 
-        public AnimalRepository(AnimalsContext Data) : base(Data) { _data = Data; }
-
-
-        public IEnumerable<Animal> ShowNumOfAnimalsWithTheMostComment(int numofAnimalReturn)
-        { return _data.Animals.OrderByDescending(animal => animal.Comments!.Count).Take(numofAnimalReturn); }
+        public IEnumerable<Animal> ShowNumOfAnimalsWithTheMostComment(int numofAnimalReturn) =>
+            _data.Animals.OrderByDescending(animal => animal.Comments!.Count).Take(numofAnimalReturn);
 
         public override bool Edit(Animal entity, int Id )
         {
@@ -53,12 +50,6 @@ namespace Model.Repository
         public override Animal? FindById(int Id)
         {
             return _data.Animals.Include(c => c.Comments).FirstOrDefault(x => x.AnimalId == Id);
-        }
-
-
-        public async void SaveAsync()
-        {
-            await _data.SaveChangesAsync();
         }
     }
 

@@ -8,7 +8,7 @@
     <div class="u-clearfix u-sheet u-sheet-1">
         <h1 class="u-custom-font u-font-lobster ">Edit Animal</h1>
         <div class="u-form u-form-1">
-            <form asp-action="EditAnimal" asp-controller="Administrator" asp-route-Id="@Model.AnimalId" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+            <form enctype="multipart/form-data" asp-action="EditAnimal" asp-controller="Administrator" asp-route-Id="@Model.AnimalId" method="post" class="u-clearfix u-form-spacing-10 u-inner-form" style="padding: 10px" source="email" name="form">
 
                 <div class="u-form-group u-form-partition-factor-2 u-label-left u-form-group-1">
                     <label for="Name" class="u-custom-font u-font-oswald u-label u-spacing-0 u-label-1">Name</label>
@@ -45,8 +45,8 @@
                     <span class="text-danger" asp-validation-for="@Model.Description"></span>
                 </div>
                 <div>
-                    <label for="Image" class="u-custom-font u-font-oswald u-label u-spacing-0 u-label-1">add image for the animal</label>
-                    <input  class="form-control form-control-lg" id="Image" name="Image" type="file">
+                    <label class="u-custom-font u-font-oswald u-label u-spacing-0 u-label-1">add image for the animal</label>
+                    <input class="form-control form-control-lg" id="Image" asp-for="@Model.PictureLink" name="Image" type="file">
                     <span class="text-danger" asp-validation-for="@Model.PictureLink"></span>
                     <img class="u-image u-image-round u-radius-10 u-image-1" src="../../@Model.PictureLink" alt="" data-image-width="1280" data-image-height="739"><div>
                     </div>

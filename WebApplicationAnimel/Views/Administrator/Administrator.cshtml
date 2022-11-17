@@ -5,7 +5,7 @@
 }
 
 
-@Html.Partial("_CategorySelector")
+@await Html.PartialAsync("_CategorySelector")
 
 
 <script>
@@ -15,10 +15,6 @@
         $('#Categories').change(function () {
 
             let selectedValue = $('#Categories').val();
-
-            //let textCategory = $('#TheCategory');
-            //textCategory.text($("#Categories option:selected").text());
-
             window.location.href = "/Administrator/Administrator/" + selectedValue
         })
     })

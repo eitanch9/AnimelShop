@@ -25,7 +25,7 @@ $(document).ready(function () {
                 <h2 class="u-align-center u-custom-font u-font-lobster u-text u-text-1">The animals in the shop</h2>
             </div>
         </div>
-            @Html.Partial("_CategorySelector")
+            @await Html.PartialAsync("_CategorySelector")
         <div class="u-gallery u-layout-grid u-show-text-on-hover u-gallery-1">
             <div class="u-gallery-inner u-gallery-inner-1">
                 @foreach (var item in Model)

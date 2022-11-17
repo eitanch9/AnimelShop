@@ -7,7 +7,7 @@ namespace Model.Repository
 {
     public abstract class MyRepository<T, TDBContext> : IRepository<T> where T : class  where TDBContext : DbContext
     {
-        private TDBContext _data { get; set; }
+        protected TDBContext _data { get; set; }
 
         public MyRepository(TDBContext Data)
         {

@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Graph;
 using Model.Models;
 using Model.Repository;
-using NuGet.Protocol.Core.Types;
+//using NuGet.Protocol.Core.Types;
 using System;
 using System.Diagnostics.Metrics;
 using System.Xml;
@@ -27,13 +27,27 @@ namespace WebApplicationAnimel.Controllers
             _webHost = webHost;
         }
 
+        public IActionResult connect()
+        {
+            return View();
+        }
+        public IActionResult tryConnect(string name, int password)
+        {
+            if (name == "eitan" && password == 1234)
+            {
+                var v = RedirectToAction("Administrator");
+                return v;
 
+            }
+            return RedirectToAction("connect");
+        }
 
         public IActionResult Administrator(int Id)
         {
             var categories = category.GetItems();
             ViewBag.Categories = categories;
-            return View(animals.ShoeAnimalByCategory(Id));
+            var v = View(animals.ShoeAnimalByCategory(Id));
+            return v;
         }
 
 
@@ -64,9 +78,9 @@ namespace WebApplicationAnimel.Controllers
                     {
                         await Image.CopyToAsync(uplaoding);
                     }
-                    var animal = new Animal { Name = Name, Age = Age, CategoryId = CategoryId, Description = Description, PictureLink ="Assets/"+ Image.FileName };
+                    var animal = new Animal { Name = Name, Age = Age, CategoryId = CategoryId, Description = Description, PictureLink = "Assets/" + Image.FileName };
                     animals.Add(animal);
-                   
+
                     return RedirectToAction("Administrator", "Administrator");
                 }
                 else
@@ -85,11 +99,15 @@ namespace WebApplicationAnimel.Controllers
             ViewBag.Categories = categories;
             return View(animals.FindById(Id));
         }
-       
+
         [HttpPost]
-        public async Task<IActionResult> EditAnimal(int Id,string Name, int Age, IFormFile Image, string Description, int CategoryId)
+        public async Task<IActionResult> EditAnimal(int Id, string Name, int Age, IFormFile Image, string Description, int CategoryId)
         {
-           
+            if (Image == null)
+            {
+
+            }
+
             if (ModelState.IsValid)
             {
                 var SaveImg = Path.Combine(_webHost.WebRootPath, "Assets", Image.FileName);
@@ -98,12 +116,12 @@ namespace WebApplicationAnimel.Controllers
                 {
                     using (var uplaoding = new FileStream(SaveImg, FileMode.Create))
                     {
-                      await Image.CopyToAsync(uplaoding);
+                        await Image.CopyToAsync(uplaoding);
                     }
                     var animal = new Animal { Name = Name, Age = Age, CategoryId = CategoryId, Description = Description, PictureLink = "Assets/" + Image.FileName };
-                   var edit= animals.Edit(animal,Id);
+                    var edit = animals.Edit(animal, Id);
 
-                    return RedirectToAction("Administrator" , "Administrator");
+                    return RedirectToAction("Details", "Animal", new { Id = Id });
                 }
                 else
                 {
@@ -112,7 +130,7 @@ namespace WebApplicationAnimel.Controllers
                 }
 
             }
-            return RedirectToAction($"EditAnimalPage", "Administrator",new { Id = Id });
+            return RedirectToAction($"EditAnimalPage", "Administrator", new { Id = Id });
         }
 
     }

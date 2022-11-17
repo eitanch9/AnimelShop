@@ -1,21 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Model.DAL;
+﻿using Model.DAL;
 using Model.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace Model.Repository
 {
     public class CommentRepoditory : MyRepository<Comment, AnimalsContext>
     {
-        private AnimalsContext _data { get; set; }
-        public CommentRepoditory(AnimalsContext Data) : base(Data) { _data = Data; }
+        public CommentRepoditory(AnimalsContext Data) : base(Data) { }
 
-        public override bool Edit(Comment entity , int Id)
+        public override bool Edit(Comment entity, int Id)
         {
             if (entity == null) { return false; }
 
@@ -30,9 +22,6 @@ namespace Model.Repository
             return false;
         }
 
-        public override Comment? FindById(int Id)
-        {
-           return _data.Comments.FirstOrDefault(c=>c.CommentId==Id);
-        }
+        public override Comment? FindById(int Id) => _data.Comments.FirstOrDefault(c => c.CommentId == Id);
     }
 }

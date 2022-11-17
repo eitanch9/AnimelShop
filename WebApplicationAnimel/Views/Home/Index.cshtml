@@ -5,21 +5,26 @@
 }
 
 <body class="u-body u-xl-mode bg-info align-middle " data-lang="en">
-    <h1>The favorite animal</h1>
-    <section class="u-clearfix u-section-1" id="sec-8b85">
+
+    <section class="u-align-center u-clearfix u-gradient u-section-1" style="background-color:aqua;" id="sec-8b85">
         <div class="u-clearfix u-sheet u-sheet-1">
-            <div class="u-expanded-width u-list u-list-1">
-                <div class=" u-repeater u-repeater-1">
-                    @foreach (var item in Model)
-                    {
-                        <div class="u-container-style u-list-item u-repeater-item">
-                            <div class="u-container-layout u-similar-container u-container-layout-1">
-                                <h3 class="text-start u-custom-font u-font-lobster u-text u-text-default u-text-3 ">@item.Name</h3>
-                                <img class=" u-radius-45" src=@item.PictureLink alt="Animal Photo" width="200" height="200">
-                                <a asp-controller="Animal" asp-action="Details" asp-route-Id="@item.AnimalId" class="u-active-none u-border-2 u-border-hover-palette-2-base u-border-palette-2-light-1 u-btn u-button-style u-hover-none u-none u-text-body-color u-btn-1">learn more</a>
+
+            <h1 class="u-custom-font u-font-lobster">The favorite animal</h1>
+
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <div class="u-expanded-width u-list u-list-1">
+                    <div class=" u-repeater u-repeater-1">
+                        @foreach (var item in Model)
+                        {
+                            <div class="u-container-style u-list-item u-repeater-item">
+                                <div class="u-container-layout u-similar-container u-container-layout-1">
+                                    <h3 class="text-start u-custom-font u-font-lobster u-text u-text-default u-text-3 ">@item.Name</h3>
+                                    <img class=" u-radius-45" src=@item.PictureLink alt="Animal Photo" width="200" height="200">
+                                    <a asp-controller="Animal" asp-action="Details" asp-route-Id="@item.AnimalId" class="u-active-none u-border-2 u-border-hover-palette-2-base u-border-palette-2-light-1 u-btn u-button-style u-hover-none u-none u-text-body-color u-btn-1">learn more</a>
+                                </div>
                             </div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
             </div>
         </div>

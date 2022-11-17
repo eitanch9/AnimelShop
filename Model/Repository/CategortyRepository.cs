@@ -11,8 +11,7 @@ namespace Model.Repository
 {
     public class CategortyRepository : MyRepository<Category, AnimalsContext>
     {
-        private AnimalsContext _data { get; set; }
-        public CategortyRepository(AnimalsContext Data) : base(Data){ _data = Data; }
+        public CategortyRepository(AnimalsContext Data) : base(Data){ }
 
         public override bool Edit(Category entity, int Id)
         {

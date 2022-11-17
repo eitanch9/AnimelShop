@@ -1,21 +1,21 @@
 ﻿<nav class="navbar navbar-expand-lg " style="background-color:paleturquoise ;">
     <div class="container-fluid">
         <form class="d-flex">
-            <img src="~/assets/navbarpic.png" width="50em;" height="60em;" />
+            <img src="~/assets/navbarpic.png" width="50" height="60" />
         </form>
         <h4 class="navbar-brand"><a class="nav-link active" aria-current="page" asp-action="Index" asp-controller="Home" asp-route-categoryName="All">Home</a></h4>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 
                 <a class="nav-link" asp-action="Animals" asp-controller="Animal" asp-route-Id="0">Animals</a>
-                <a class="nav-link" asp-action="Administrator" asp-controller="Administrator" asp-route-Id="0">Administrator</a>
                 <a class="nav-link" asp-action="Index" asp-controller="About">About</a>
+                
 
             </div>
         </div>
 
         <div class=" text-end">
-            <a class="nav-link text-end" href="#">Administrator2</a>
+            <a class="nav-link text-end" asp-action="connect" asp-controller="Administrator">Administrator</a>
         </div>
     </div>
 </nav>
