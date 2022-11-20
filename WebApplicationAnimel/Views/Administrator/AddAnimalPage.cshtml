@@ -40,7 +40,7 @@
                 </div>
                 <div>
                     <label class="u-custom-font u-font-oswald u-label u-spacing-0 u-label-1">add image for the animal</label>
-                    <input asp-for="@Model.PictureLink" type="file" name="Image" class="form-control form-control-lg" id="Image" >
+                    <input accept="image/png, image/gif, image/jpeg , image/jfif" asp-for="@Model.PictureLink" type="file" name="Image" class="form-control form-control-lg" id="Image">
                     <span asp-validation-for="@Model.PictureLink"></span>
                 </div>
 

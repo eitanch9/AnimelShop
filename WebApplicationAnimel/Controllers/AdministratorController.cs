@@ -62,7 +62,7 @@ namespace WebApplicationAnimel.Controllers
         {
             var categories = category.GetItems();
             ViewBag.Categories = categories;
-            return View();
+            return View();  
         }
 
         [HttpPost]

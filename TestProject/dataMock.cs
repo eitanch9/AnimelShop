@@ -1,12 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Model.DAL;
 using Model.Models;
-using System.ComponentModel.Design;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Model.DAL
+namespace TestProject
 {
-    public class AnimalsContext : DbContext
+    public class dataMock:DbContext
     {
-        public AnimalsContext(DbContextOptions<AnimalsContext> options) : base(options)
+        public dataMock(DbContextOptions<dataMock> options) : base(options)
         {
         }
 
@@ -14,7 +19,6 @@ namespace Model.DAL
         public DbSet<Category>? Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
-        //add to database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasData(
@@ -73,55 +77,56 @@ namespace Model.DAL
                  new { CommentText = "The dog is the earliest domesticated animal", AnimalId = 1, CommentId = ++id },
                  new { CommentText = "Dogs' sense of hearing is much more developed than that of humans", AnimalId = 1, CommentId = ++id },
                  new { CommentText = "Dogs have two-color vision", AnimalId = 1, CommentId = ++id },
-                 new { CommentText = "The weight of an adult domestic cat varies on average between 4-5 kilograms", AnimalId =2 , CommentId = ++id },
-                 new { CommentText = "The house cat is a domesticated carnivorous mammal", AnimalId =2 , CommentId = ++id },
+                 new { CommentText = "The weight of an adult domestic cat varies on average between 4-5 kilograms", AnimalId = 2, CommentId = ++id },
+                 new { CommentText = "The house cat is a domesticated carnivorous mammal", AnimalId = 2, CommentId = ++id },
                  new { CommentText = "They weigh up to 20 kilograms", AnimalId = 3, CommentId = ++id },
-                 new { CommentText = "The most striking visual characteristic of this monkey is the large and prominent nose of the male", AnimalId =3 , CommentId = ++id },
-                 new { CommentText = "Wild males live to the age of 31 on average and to the age of 50-60 years", AnimalId =4 , CommentId = ++id },
-                 new { CommentText = "The weight of most species is between 60 and 200 kg", AnimalId =4 , CommentId = ++id },
-                 new { CommentText = "The dolphin is considered a human-friendly animal", AnimalId =4 , CommentId = ++id },
-                 new { CommentText = "Dolphins are not monogamous", AnimalId =4 , CommentId = ++id },
-                 new { CommentText = "The main enemies of the dolphins are the sharks", AnimalId =4 , CommentId = ++id },
+                 new { CommentText = "The most striking visual characteristic of this monkey is the large and prominent nose of the male", AnimalId = 3, CommentId = ++id },
+                 new { CommentText = "Wild males live to the age of 31 on average and to the age of 50-60 years", AnimalId = 4, CommentId = ++id },
+                 new { CommentText = "The weight of most species is between 60 and 200 kg", AnimalId = 4, CommentId = ++id },
+                 new { CommentText = "The dolphin is considered a human-friendly animal", AnimalId = 4, CommentId = ++id },
+                 new { CommentText = "Dolphins are not monogamous", AnimalId = 4, CommentId = ++id },
+                 new { CommentText = "The main enemies of the dolphins are the sharks", AnimalId = 4, CommentId = ++id },
                  new { CommentText = "The common fruit fly uses for echolocation the clicking sounds of its tongue against the wall of the pharynx, and not guttural sounds.", AnimalId = 5, CommentId = ++id },
                  new { CommentText = "The only fruit bat found in Israel", AnimalId = 5, CommentId = ++id },
-                 new { CommentText = "Most of the parrot's body is dark gray in color", AnimalId =6 , CommentId = ++id },
-                 new { CommentText = "It is not possible to differentiate between a male and a female in appearance", AnimalId =6 , CommentId = ++id },
-                 new { CommentText = "The eagle eats carrion", AnimalId =7 , CommentId = ++id },
-                 new { CommentText = "The neck of the eagle is long, its body length is 110-114 cm", AnimalId =7 , CommentId = ++id },
-                 new { CommentText = "Its weight is 1.5 kg", AnimalId =8 , CommentId = ++id },
-                 new { CommentText = "The crows are mostly black", AnimalId =8 , CommentId = ++id },
-                 new { CommentText = "The hasida feeds mainly on insects", AnimalId =9 , CommentId = ++id },
-                 new { CommentText = "The hasida migrates to great distances", AnimalId =9 , CommentId = ++id },
-                 new { CommentText = "There is concern about the depletion of the salmon fish population in the Atlantic Ocean", AnimalId =10 , CommentId = ++id },
-                 new { CommentText = "The natural source of salmon is in the northern hemisphere only", AnimalId =10 , CommentId = ++id },
-                 new { CommentText = "Tetraodontidae have four teeth", AnimalId =11 , CommentId = ++id },
-                 new { CommentText = "Considered a delicacy in Japan", AnimalId =11 , CommentId = ++id },
-                 new { CommentText = "Seahorse fertilization is internal fertilization. The number of eggs in a pouch can range from 10-300 eggs.", AnimalId =12 , CommentId = ++id },
-                 new { CommentText = "Most species are not threatened nor are they in danger of extinction", AnimalId =13 , CommentId = ++id },
-                 new { CommentText = "Their stinger, located at the base of the tail, is long and razor-sharp and coated with venom.", AnimalId =13 , CommentId = ++id },
-                 new { CommentText = "The pythons range from 1 meter to 6 meters", AnimalId =14 , CommentId = ++id },
-                 new { CommentText = "Pythons are a family of non-venomous snakes that kill their prey by suffocating it.", AnimalId =14 , CommentId = ++id },
-                 new { CommentText = "Grows to a length of up to 22 cm including the tail", AnimalId =15 , CommentId = ++id },
-                 new { CommentText = "Alligators are characterized by a wider snout than the snouts of members of the crocodile family", AnimalId =16 , CommentId = ++id },
-                 new { CommentText = "The average weight of an American alligator is 270 kilograms", AnimalId =16 , CommentId = ++id },
-                 new { CommentText = "There are about 250 species whose size ranges from 8 centimeters to 2.74 meters", AnimalId =17 , CommentId = ++id },
-                 new { CommentText = "Weights from a few kilograms up to 900 kilograms", AnimalId =17 , CommentId = ++id },
-                 new { CommentText = "Their most prominent feature is a heavy armor covering the back and belly.", AnimalId =17 , CommentId = ++id },
-                 new { CommentText = "Characterized by a narrow waist and smooth skin", AnimalId =18 , CommentId = ++id },
-                 new { CommentText = "Approximately 20,000 eggs are laid in each litter", AnimalId =18 , CommentId = ++id },
-                 new { CommentText = "The diet of adult salamanders includes many invertebrates - insects, arthropods and worms", AnimalId =19 , CommentId = ++id },
-                 new { CommentText = "There are color differences between the male and the female", AnimalId =20 , CommentId = ++id },
-                 new { CommentText = "The hind toes have a web", AnimalId =20 , CommentId = ++id },
-                 new { CommentText = "These creatures are often characterized by being made of a jelly-like substance", AnimalId =21 , CommentId = ++id },
-                 new { CommentText = "The sand crab spends most of its time in the sea and feeds mainly on algae, plankton and the remains of small fish found on the seabed", AnimalId =22 , CommentId = ++id },
-                 new { CommentText = "Its body is covered with hard armor that protects it from large fish", AnimalId =22 , CommentId = ++id },
-                 new { CommentText = "Its length is on average about 1.4 m", AnimalId =23 , CommentId = ++id },
-                 new { CommentText = "and can weigh over 1.5 kg", AnimalId =23 , CommentId = ++id },
-                 new { CommentText = "Eventually lost his pair of arms", AnimalId =24 , CommentId = ++id }
+                 new { CommentText = "Most of the parrot's body is dark gray in color", AnimalId = 6, CommentId = ++id },
+                 new { CommentText = "It is not possible to differentiate between a male and a female in appearance", AnimalId = 6, CommentId = ++id },
+                 new { CommentText = "The eagle eats carrion", AnimalId = 7, CommentId = ++id },
+                 new { CommentText = "The neck of the eagle is long, its body length is 110-114 cm", AnimalId = 7, CommentId = ++id },
+                 new { CommentText = "Its weight is 1.5 kg", AnimalId = 8, CommentId = ++id },
+                 new { CommentText = "The crows are mostly black", AnimalId = 8, CommentId = ++id },
+                 new { CommentText = "The hasida feeds mainly on insects", AnimalId = 9, CommentId = ++id },
+                 new { CommentText = "The hasida migrates to great distances", AnimalId = 9, CommentId = ++id },
+                 new { CommentText = "There is concern about the depletion of the salmon fish population in the Atlantic Ocean", AnimalId = 10, CommentId = ++id },
+                 new { CommentText = "The natural source of salmon is in the northern hemisphere only", AnimalId = 10, CommentId = ++id },
+                 new { CommentText = "Tetraodontidae have four teeth", AnimalId = 11, CommentId = ++id },
+                 new { CommentText = "Considered a delicacy in Japan", AnimalId = 11, CommentId = ++id },
+                 new { CommentText = "Seahorse fertilization is internal fertilization. The number of eggs in a pouch can range from 10-300 eggs.", AnimalId = 12, CommentId = ++id },
+                 new { CommentText = "Most species are not threatened nor are they in danger of extinction", AnimalId = 13, CommentId = ++id },
+                 new { CommentText = "Their stinger, located at the base of the tail, is long and razor-sharp and coated with venom.", AnimalId = 13, CommentId = ++id },
+                 new { CommentText = "The pythons range from 1 meter to 6 meters", AnimalId = 14, CommentId = ++id },
+                 new { CommentText = "Pythons are a family of non-venomous snakes that kill their prey by suffocating it.", AnimalId = 14, CommentId = ++id },
+                 new { CommentText = "Grows to a length of up to 22 cm including the tail", AnimalId = 15, CommentId = ++id },
+                 new { CommentText = "Alligators are characterized by a wider snout than the snouts of members of the crocodile family", AnimalId = 16, CommentId = ++id },
+                 new { CommentText = "The average weight of an American alligator is 270 kilograms", AnimalId = 16, CommentId = ++id },
+                 new { CommentText = "There are about 250 species whose size ranges from 8 centimeters to 2.74 meters", AnimalId = 17, CommentId = ++id },
+                 new { CommentText = "Weights from a few kilograms up to 900 kilograms", AnimalId = 17, CommentId = ++id },
+                 new { CommentText = "Their most prominent feature is a heavy armor covering the back and belly.", AnimalId = 17, CommentId = ++id },
+                 new { CommentText = "Characterized by a narrow waist and smooth skin", AnimalId = 18, CommentId = ++id },
+                 new { CommentText = "Approximately 20,000 eggs are laid in each litter", AnimalId = 18, CommentId = ++id },
+                 new { CommentText = "The diet of adult salamanders includes many invertebrates - insects, arthropods and worms", AnimalId = 19, CommentId = ++id },
+                 new { CommentText = "There are color differences between the male and the female", AnimalId = 20, CommentId = ++id },
+                 new { CommentText = "The hind toes have a web", AnimalId = 20, CommentId = ++id },
+                 new { CommentText = "These creatures are often characterized by being made of a jelly-like substance", AnimalId = 21, CommentId = ++id },
+                 new { CommentText = "The sand crab spends most of its time in the sea and feeds mainly on algae, plankton and the remains of small fish found on the seabed", AnimalId = 22, CommentId = ++id },
+                 new { CommentText = "Its body is covered with hard armor that protects it from large fish", AnimalId = 22, CommentId = ++id },
+                 new { CommentText = "Its length is on average about 1.4 m", AnimalId = 23, CommentId = ++id },
+                 new { CommentText = "and can weigh over 1.5 kg", AnimalId = 23, CommentId = ++id },
+                 new { CommentText = "Eventually lost his pair of arms", AnimalId = 24, CommentId = ++id }
                 );
 
 
         }
+
 
 
 

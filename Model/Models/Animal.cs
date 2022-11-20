@@ -65,6 +65,7 @@ namespace Model.Models
         }
     }
 
+    //check if the file is a picture
     public class OnlyImageAttribute : ValidationAttribute
     {
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)

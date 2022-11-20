@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace TestProject
 {
-    public class RepositoryTest
+    public class AnimalRepositoryTest
     {
+
+
         [SetUp]
         public void Setup()
         {
